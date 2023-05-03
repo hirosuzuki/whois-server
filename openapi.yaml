@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: Whois API
+  description: whois server
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/
+paths:
+  /whois/{domain}:
+    get:
+      summary: Get domain whois information
+      description: Retrieve the whois information for a given domain name.
+      parameters:
+        - in: path
+          name: domain
+          schema:
+            type: string
+          required: true
+          description: The domain name to retrieve whois information for.
+      responses:
+        '200':
+          description: Whois information successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      domain:
+                        type: string
+                        description: The domain name
+                      nameservers:
+                        type: array
+                        items:
+                          type: string
+                        description: The domain name servers
+                      attributes:
+                        type: object
+                        additionalProperties:
+                          type: string
+                        description: Custom attributes for the domain
+                      raw:
+                        type: string
+                        description: Raw whois data
+                  cached:
+                    type: boolean
+                    description: Indicates if the response was retrieved from cache
+                  fetched:
+                    type: string
+                    format: date-time
+                    description: The timestamp when the information was fetched
+        '400':
+          description: Bad request - Invalid domain name
+        '404':
+          description: Not found - Domain not found
+        '500':
+          description: Internal server error

@@ -7,6 +7,14 @@
         "ghcr.io/devcontainers/features/docker-in-docker": "",
         "ghcr.io/dhoeric/features/google-cloud-cli": ""
     },
+    "forwardPorts": [
+        8080
+    ],
+    "portsAttributes": {
+        "8080": {
+            "protocol": "http"
+        }
+    },
     "customizations": {
         "vscode": {
             "extensions": [
