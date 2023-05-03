@@ -1,0 +1,8 @@
+{
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "editor.formatOnSave": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+}

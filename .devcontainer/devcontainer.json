@@ -1,0 +1,17 @@
+{
+    "name": "dev golang whois server",
+    // https://hub.docker.com/_/microsoft-devcontainers
+    "image": "mcr.microsoft.com/devcontainers/go:1.20-bullseye",
+    // https://containers.dev/features.
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker": "",
+        "ghcr.io/dhoeric/features/google-cloud-cli": ""
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mhutchie.git-graph"
+            ]
+        }
+    }
+}
