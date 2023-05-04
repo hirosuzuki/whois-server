@@ -44,12 +44,17 @@ func getDomainWhois(c echo.Context) error {
 	return c.JSON(http.StatusOK, whoisInfo)
 }
 
+func home(c echo.Context) error {
+	return c.String(http.StatusOK, "Whois API is running")
+}
+
 func main() {
 	e := echo.New()
 	e.HideBanner = true
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	e.GET("/", home)
 	e.GET("/whois/:domain", getDomainWhois)
 
 	port := os.Getenv("PORT")
