@@ -10,6 +10,8 @@ paths:
     get:
       summary: Get domain whois information
       description: Retrieve the whois information for a given domain name.
+      security:
+        - BearerAuth: []
       parameters:
         - in: path
           name: domain
@@ -53,7 +55,15 @@ paths:
                     description: The timestamp when the information was fetched
         '400':
           description: Bad request - Invalid domain name
+        '401':
+          description: Unauthorized - Invalid or missing JWT
         '404':
           description: Not found - Domain not found
         '500':
           description: Internal server error
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
